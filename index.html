@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Tonne-A-Moneh!</title>
 
     <!-- <link rel="stylesheet" href="/css/vendor/bootstrap.css" media="screen" title="no title"> -->
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
     <link rel="stylesheet" href="css/main.css">
 
     <!-- <script src="js/vendor/angular.min.js"></script> -->
@@ -26,7 +27,7 @@
               -->
             </md-nav-bar>
             <div class="ext-content">
-                <span>{{currentNavItem}}</span>
+                <span class="md-display-1">{{currentNavItem}}</span>
 
             </div>
         </md-content>
@@ -43,7 +44,7 @@
                     <div layout-gt-sm="row">
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>{{labels.rent}}</label>
-                            <input type="number" placeholder="0.00" ng-model="user.rent"
+                            <input type="number" ng-model="user.rent"
                 ng-keyup="displayRent();">
                         </md-input-container>
                     </div>
@@ -52,12 +53,12 @@
                     <div layout-gt-xs="row">
                         <md-input-container class="md-block" flex-gt-xs>
                             <label>{{labels.power}}</label>
-                            <input ng-model="user.power" ng-keyup="displayPower();" type="number" placeholder="0.00">
+                            <input ng-model="user.power" ng-keyup="displayPower();" type="number" >
                         </md-input-container>
 
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>{{labels.water}}</label>
-                            <input ng-model="user.water" ng-keyup="displayWater();" type="number" placeholder="0.00">
+                            <input ng-model="user.water" ng-keyup="displayWater();" type="number" >
                         </md-input-container>
                     </div>
 
@@ -65,12 +66,12 @@
                     <div layout-gt-sm="row">
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>{{labels.phone}}</label>
-                            <input ng-model="user.phone" ng-keyup="displayPhone();" type="number" placeholder="0.00">
+                            <input ng-model="user.phone" ng-keyup="displayPhone();" type="number" >
                         </md-input-container>
 
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>{{labels.isp}}</label>
-                            <input ng-model="user.isp" ng-keyup="displayISP();" type="number" placeholder="0.00">
+                            <input ng-model="user.isp" ng-keyup="displayISP();" type="number" >
                         </md-input-container>
                     </div>
 
@@ -83,45 +84,73 @@
 
                 <!-- Rent Display -->
                 <div layout="column">
-                    <div flex><h3>{{labels.rent}}</h3></div>
-                    <div flex>Buffer: $ {{buffer.rent}}</div>
-                    <div flex>Total: $ {{total.rent}}</div>
+                    <div flex>
+                        <span class="{{titleClass}}">{{labels.rent}}</span>
+                    </div>
+
+                    <div flex>
+                        <span class="{{titleClass}}">{{labels.power}}</span>
+                    </div>
+
+                    <div flex>
+                        <span class="{{titleClass}}">{{labels.water}}</span>
+                    </div>
+
+                    <div flex>
+                        <span class="{{titleClass}}">{{labels.isp}}</span>
+                    </div>
+
+                    <div flex>
+                        <span class="{{titleClass}}">{{labels.phone}}</span>
+                    </div>
+                </div>
+
+                <div layout="column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+
+                <div layout="column">
+                    <div flex>
+                        <span class="{{subheadClass}}"> ${{user.rent}}</span> +
+                        <span class="{{subheadClass}}" style="color: green;"><em> ${{buffer.rent}}</em></span> =
+                        <span class="{{subheadClass}}"><strong> ${{total.rent}}</strong></span>
+                    </div>
+
+                    <div flex>
+                        <span class="{{subheadClass}}"> ${{user.power}}</span> +
+                        <span class="{{subheadClass}}" style="color: green;"><em> ${{buffer.power}}</em></span> =
+                        <span class="{{subheadClass}}"><strong> ${{total.power}}</strong></span>
+                    </div>
+
+                    <div flex>
+                        <span class="{{subheadClass}}"> ${{user.water}}</span> +
+                        <span class="{{subheadClass}}" style="color: green;"><em> ${{buffer.water}}</em></span> =
+                        <span class="{{subheadClass}}"><strong> ${{total.water}}</strong></span>
+                    </div>
+
+                    <div flex>
+                        <span class="{{subheadClass}}"> ${{user.isp}}</span> +
+                        <span class="{{subheadClass}}" style="color: green;"><em> ${{buffer.isp}}</em></span> =
+                        <span class="{{subheadClass}}"><strong> ${{total.isp}}</strong></span>
+                    </div>
+
+                    <div flex>
+                        <span class="{{subheadClass}}"> ${{user.phone}}</span> +
+                        <span class="{{subheadClass}}" style="color: green;"><em> ${{buffer.phone}}</em></span> =
+                        <span class="{{subheadClass}}"><strong> ${{total.phone}}</strong></span>
+                    </div>
                 </div>
                 <div layout="column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
 
-                <!-- Power Display -->
-                <div layout="column">
-                    <div flex><h3>{{labels.power}}</h3></div>
-                    <div flex>Buffer: $ {{buffer.power}}</div>
-                    <div flex>Total: $ {{total.power}}</div>
-                </div>
-                <div layout="column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
 
-                <!-- ISP Display -->
-                <div layout="column">
-                    <div flex><h3>{{labels.isp}}</h3></div>
-                    <div flex>Buffer: $ {{buffer.isp}}</div>
-                    <div flex>Total: $ {{total.isp}}</div>
-                </div>
-                <div layout="column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
 
-                <!-- Phone Display -->
-                <div layout="column">
-                    <div flex><h3>{{labels.phone}}</h3></div>
-                    <div flex>Buffer: $ {{buffer.phone}}</div>
-                    <div flex>Total: $ {{total.phone}}</div>
-                </div>
-                <div layout="column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
 
-                <!-- Water Display -->
-                <div layout="column">
-                    <div flex><h3>{{labels.water}}</h3></div>
-                    <div flex>Buffer: $ {{buffer.water}}</div>
-                    <div flex>Total: $ {{total.water}}</div>
-                </div>
-                <div layout="column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
             </div>
+            <footer>
+                <md-toolbar class="md-scroll-shrink">
+                    <div layout="row" layout-align="center center" flex>
 
+                    </div>
+                </md-toolbar>
+            </footer>
         </md-content>
     </div>
 
