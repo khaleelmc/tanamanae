@@ -76,6 +76,8 @@
 
         // The future!
         function calculateBuffer(num, category) {
+            showPie();
+
             // ensures "NaN" isn't displayed for non-numerical inputs
             if (isNaN(num) || num == '' || num == null) {
                 return 0;
@@ -98,6 +100,30 @@
                     break;
                 default:
                     return 0;
+            }
+        }
+
+        function showPie() {
+            google.charts.load('current', {'packages':['corechart']});
+                google.charts.setOnLoadCallback(drawChart);
+                function drawChart() {
+
+                var data = google.visualization.arrayToDataTable([
+                    ['Utility', 'Cost'],
+                    [$scope.labels['rent'],     $scope.total['rent']],
+                    [$scope.labels['isp'],      $scope.total['isp']],
+                    [$scope.labels['power'],    $scope.total['power']],
+                    [$scope.labels['phone'],    $scope.total['phone']],
+                    [$scope.labels['water'],    $scope.total['water']]
+                ]);
+
+                var options = {
+                    title: 'Total Expenses'
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+                chart.draw(data, options);
             }
         }
 

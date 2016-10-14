@@ -127,7 +127,7 @@
                         <span class="{{subheadClass}}"><strong> ${{total.phone}}</strong></span>
                         <span class="{{subheadClass}}" style="color: green;"><em> (${{buffer.phone}})</em></span>
                     </div>
-                    
+
                     <div flex>
                         <span class="{{subheadClass}}"><strong> ${{total.isp}}</strong></span>
                         <span class="{{subheadClass}}" style="color: green;"><em> (${{buffer.isp}})</em></span>
@@ -136,12 +136,17 @@
                 </div>
                 <div layout="column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
 
+            </div>
 
-
-
+            <div layout="row">
+                <div layout="column">
+                    <div id="piechart" style="width: 450px; height: 250px;"></div>
+                </div>    
             </div>
         </md-content>
     </div>
+    <!-- Google Charts Library -->
+    <script type="text/javascript" src="//www.gstatic.com/charts/loader.js"></script>
 
     <!-- Angular Material requires Angular.js Libraries -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
